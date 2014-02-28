@@ -1,0 +1,65 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<plugin xmlns="http://cordova.apache.org/ns/plugins/1.0"
+           id="com.aisino.plugin.photocropeditor"
+      version="0.1.0">
+    <name>PhotoCropEditor</name>
+    <description>Cordova PhotoCropEditor Plugin</description>
+    <license>Apache</license>
+    <keywords>cordova,PhotoCropEditor</keywords>
+
+    
+
+    <!-- android -->
+    <platform name="android">
+        <config-file target="res/xml/config.xml" parent="/*">
+            <feature name="photocropeditor" >
+                <param name="android-package" value="com.aisino.plugin.photocropeditor"/>
+            </feature>
+        </config-file>
+        <config-file target="AndroidManifest.xml" parent="/manifest">
+				    <uses-permission android:name="android.permission.CALL_PHONE"/>
+				</config-file>
+        <js-module src="www/android/dialer.js" name="Dialer">
+            <clobbers target="window.plugin.dialer" />
+        </js-module>
+        <source-file src="src/android/Dialer.java" target-dir="src/com/aisino/plugin" />
+    </platform>
+    
+      <!-- ios -->
+    <platform name="ios">
+        <config-file target="config.xml" parent="/*">
+            <feature name="PhotoCropEditor">
+                <param name="ios-package" value="PhotoCropEditor"/>
+            </feature>
+        </config-file>
+        <js-module src="www/ios/photocropeditor.js" name="PhotoCropEditor">
+            <clobbers target="window.plugin.photocropeditor" />
+        </js-module>
+        <header-file src="src/ios/PhotoCropEditor.h" />
+        <source-file src="src/ios/PhotoCropEditor.m" />
+        
+        <header-file src="src/ios/lib/HFImageEditorFrameView.h" />
+       	<source-file src="src/ios/lib/HFImageEditorFrameView.m" />
+        <header-file src="src/ios/lib/HFImageEditorViewController.h" />
+        <source-file src="src/ios/lib/HFImageEditorViewController.m" />
+        <header-file src="src/ios/lib/HFImageEditorViewController+Private.h" />
+        
+       	<header-file src="src/ios/lib/DemoImageEditor.h" />
+       	<source-file src="src/ios/lib/DemoImageEditor.m" />
+       	<source-file src="src/ios/lib/DemoImageEditor.xib" />
+       	
+       	<header-file src="src/ios/lib/ViewController.h" />
+       	<source-file src="src/ios/lib/ViewController.m" />
+				<source-file src="src/ios/lib/ViewController.xib" />
+
+				<source-file src="src/ios/lib/photocropeditor-Info.plist" />
+
+        <framework src="AssetsLibrary.framework"  />
+       	<framework src="UIKit.framework"  />       
+        <framework src="Foundation.framework" />
+       	<framework src="CoreGraphics.framework"  />
+        
+    </platform>
+
+</plugin>
